@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag 'new', :media => "all" %>
+
+<div class="sinnkitoukou">
+<%= form_for @song do |f| %>
+  <div class="field">
+    <h2>新規投稿ページ</h2>
+  </div>
+
+  <div class="field">
+    <%= f.label :曲名 %><br>
+    <%= f.text_field :music, :size => 40 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :youtube_url %><br>
+    <%= f.text_field :youtube_url, :size => 40 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :自由記述  %><br>
+    <%= f.text_area :about, :size => "42x4" %>
+  </div>
+
+  <div class="field">
+    <%= f.submit "投稿する" %>
+  </div>
+  
+<% end %>
+</div>
+<%= link_to "一覧に戻る", songs_path %>

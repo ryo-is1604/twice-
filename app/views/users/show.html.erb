@@ -1,0 +1,63 @@
+<%= stylesheet_link_tag 'index', :media => "all" %>
+
+<h1>マイページ</h1>
+<%= image_tag @user.image_url, size: "70x70" if @user.image? %>
+<p>名前 : <%= @user.name %></p>
+<p>メールアドレス : <%= @user.email %></p>
+<p>プロフィール : <%= @user.profile %></p>
+
+<% if current_user.id == @user.id %>
+  <%= link_to "編集する", edit_user_registration_path %>
+<% end %>
+
+<%= render 'follow_form' %>
+<%= render 'stats' %>
+
+<% if @user.id == current_user.id %>
+    <%= @msg %>
+<% else %>
+    <% if @isRoom == true %>
+        <p><%= link_to 'DMへ', room_path(@roomId) %></p>
+    <% else %>
+        <%= form_for @room do |f| %>
+            <%= fields_for @entry do |e|%>
+                <% e.hidden_field :user_id, value: @user.id %>
+            <% end %>
+        <%= f.submit "DMを開始する"%>
+        <% end %>
+    <% end %>
+<% end %>
+</div>
+
+<h2>ユーザーの投稿一覧</h2>
+<div class="toukouitirann">
+  <% @user.songs.each do |t| %>
+    <div class="song">
+      <%= image_tag t.user.image_url, size: "25x25" if t.user.image? %>
+      <%= link_to t.user.name, user_path(t.user.id) %><br>
+      <%= t.music %>
+      <%= t.about %>
+      <iframe width="400" height="225" src="https://www.youtube.com/embed/<%= find_youtube_url(t.youtube_url) %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+      <%= link_to "詳細へ", song_path(t.id) %>
+      <% if user_signed_in? && current_user.id == t.user_id %>
+        <%= link_to "編集する", edit_song_path(t.id) %>
+        <%= button_to "削除する", song_path(t.id), method: :delete %>
+      <% end %> 
+    </div>
+  <% end %>
+  </div> 
+
+<h2>ユーザーがいいねした投稿一覧</h2>
+<div class="toukouitirann">
+  <% @user.liked_songs.each do |t| %>
+    <div class="song">
+      <%= image_tag t.user.image_url, size: "25x25" if t.user.image? %>
+      <%= link_to t.user.name, user_path(t.user.id) %><br>
+      <%= t.music %>
+      <iframe width="400" height="225" src="https://www.youtube.com/embed/<%= find_youtube_url(t.youtube_url) %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+      <%= link_to "詳細へ", song_path(t.id) %>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "Tweet一覧に戻る", songs_path %>

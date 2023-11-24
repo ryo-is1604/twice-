@@ -1,0 +1,40 @@
+
+.signOutButton{
+    text-decoration:none;
+    display:inline-block;
+    border:3px solid royalblue;
+    background-color:aliceblue;
+    padding:5px;
+}
+.flex{
+    display:flex;
+    flex-wrap:wrap;    
+}
+.user-in{
+    display:block;
+    width:300px;
+    text-align:center;
+    border:1px solid darkgray;
+    background-color:gainsboro;
+    flex-shrink: 0;
+}
+
+.user-in{
+    width:300px;
+    padding:10px;
+    margin:10px;
+    text-align:center;
+    border:1px solid darkgray;
+    background-color:gainsboro;
+}
+
+.user-in{
+    text-align:center;
+    border:1px solid darkgray;
+    background-color:gainsboro;
+}
+.dmMain{
+    padding:30px;
+    border:1px solid darkgray;
+    background-color:gainsboro;
+}

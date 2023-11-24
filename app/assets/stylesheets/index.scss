@@ -1,0 +1,19 @@
+.toukouitirann{
+    display: flex;
+    justify-content: space-between;
+	flex-wrap: wrap;
+    text-align: center;
+    width: 100%;
+}
+
+.song{
+    width: 33.3%;
+    margin-top: 10px;
+    padding-top: 20px;
+}
+
+input[type="submit"] {
+    width: 50px;
+    font-size: 12px;
+
+}

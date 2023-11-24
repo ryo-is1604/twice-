@@ -1,0 +1,48 @@
+<%= stylesheet_link_tag 'index', :media => "all" %>
+
+<h2>投稿一覧</h2>
+
+<h4>投稿を検索</h4>
+ <%= form_tag({controller:"songs",action:"index"}, method: :get) do %>
+   <%= text_field_tag :search %>
+   <%= submit_tag '検索'  %>
+<% end %>
+
+<% if user_signed_in? %>
+  <%= link_to "マイページへ", user_path(current_user.id) %>
+<% end %>
+
+
+
+<div class="toukouitirann">
+    <% @songs.each do |t| %>
+      <div class="song">
+        <%= image_tag t.user.image_url, size: "25x25" if t.user.image? %>
+        <%= link_to t.user.name, user_path(t.user.id) %><br>
+        <%= t.music %><br>
+
+        <iframe width="400" height="225" src="https://www.youtube.com/embed/<%= find_youtube_url(t.youtube_url) %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+      
+        <% if user_signed_in? %>
+        <% if current_user.already_liked?(t) %>
+            <%= link_to song_like_path(id: t.id, song_id: t.id), method: :delete do %>
+              <i class="fas fa-heart"></i><%= t.likes.count %>
+            <% end %>
+        <% else %>
+            <%= link_to song_likes_path(id: t.id, song_id: t.id), method: :post do %>
+              <i class="far fa-heart"></i><%= t.likes.count %>
+            <% end %>
+        <% end %>
+        <% else %>
+        <i class="far fa-heart"></i><%= t.likes.count %>
+        <% end %>
+       <%= link_to "詳細へ", song_path(t.id) %>
+       <% if user_signed_in? && current_user.id == t.user_id %>
+        <%= link_to "編集する", edit_song_path(t.id) %>
+        <%= button_to "削除する", song_path(t.id), method: :delete %>
+       <% end %> 
+      </div>
+  
+  <% end %> 
+</div>   
+

@@ -1,0 +1,60 @@
+<%= stylesheet_link_tag 'sinndannnew', :media => "all" %>
+
+<%= form_for(@perfume, class: 'form-horizontal', role: 'form') do |f| %>
+    <div class="container-sindan">
+        <div class="row">
+            <div class="col-12">
+                <p>Question1. 最近の曲？昔の曲？</p>
+            </div>
+
+            <div class="col-10">
+                <div class="col-6">
+                    <p><%= f.check_box :question, {multiple: true}, "1", nil %>最近の曲</p>
+                </div>
+                <div class="col-6">
+                    <p><%= f.check_box :question, {multiple: true}, "2", nil %>昔の曲</p>
+                </div>
+            </div>
+
+            <div class="col-10">
+                <div class="col-12">
+                    <p>Question2. 韓国語の曲？日本語の曲？</p>
+                </div>
+                <div class="col-6">
+                    <p><%= f.check_box :question, {multiple: true}, "1", nil %>韓国語</p>
+                </div>
+                <div class="col-6">
+                    <p><%= f.check_box :question, {multiple: true}, "2", nil %>日本語</p>
+                </div>
+            </div>
+
+            <div class="col-10">
+                <div class="col-12">
+                    <p>Question3. どんな気分？</p>
+                </div>
+                <div class="col-6">
+                    <p><%= f.check_box :question, {multiple: true}, "1", nil %>盛り上がりたい</p>
+                </div>
+                <div class="col-6">
+                    <p><%= f.check_box :question, {multiple: true}, "2", nil %>落ち着きたい</p>
+                </div>
+            </div>
+
+            <div class="col-10">
+                <div class="col-12">
+                    <p>Question4. どんな曲？</p>
+                </div>
+                <div class="col-6">
+                    <p><%= f.check_box :question, {multiple: true}, "1", nil %>かっこいい</p>
+                </div>
+                <div class="col-6">
+                    <p><%= f.check_box :question, {multiple: true}, "2", nil %>かわいい</p>
+                </div>
+            </div>
+        </div>
+        <div class="sindanbotan">
+            <%= f.submit "診断" %>
+        </div>
+    </div>
+    
+<% end %>

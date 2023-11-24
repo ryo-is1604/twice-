@@ -1,0 +1,9 @@
+<%= form_for @song do |f| %>
+    <%= f.label :music %>
+    <%= f.text_field :music, :size => 30 %>
+    <%= f.label :youtube_url%>
+    <%= f.text_field :youtube_url, :size => 30 %>
+    <%= f.label :about %>
+    <%= f.text_area :about, :size => "30x2" %>
+    <%= f.submit "編集する" %>
+  <% end %>
