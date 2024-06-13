@@ -1,0 +1,67 @@
+
+
+.container2{
+    text-align: center;
+}
+
+.ditail{
+    font-size: 30px;
+    margin: 30px;
+}
+
+.song2 p{
+    font-size: 20px;
+    margin-top: 15px;
+    padding: 0px 240px;
+}
+
+.responce{
+    display: flex;
+    margin-top: 30px;
+    justify-content: center;
+    gap: 60px;
+}
+.responce h2{
+    font-size: 25px;
+}
+
+.responce li{
+    font-size: 15px;
+}
+
+.like{
+    padding: 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.like li{
+    text-align: left;
+}
+
+.comment-wrapper h3{
+    font-size: 25px;
+}
+
+.comment-wrapper{
+    font-size: 15px;
+    max-width: 640px;
+    border: 1px solid black;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.comment-wrapper h3{
+    margin-bottom: 15px;
+}
+
+.comment-wrapper textarea{
+    width: 300px;  /* 横幅 */
+	height: 60px; /* 高さ */
+    font-size: 20px;
+}
+
+.comments{
+    border-bottom: 1px solid black;
+    line-height: 20px;
+}

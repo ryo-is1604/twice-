@@ -1,8 +1,11 @@
+<%= stylesheet_link_tag 'room', :media => "all" %>
+
+
 <div class="user-in">
-<% @entries.each do |e| %>
-    <h3><strong><a href="/users/<%= e.user.id %>"><%= e.user.email%></a></strong></h3>
-<% end %>
-<p>2人のDM</p>
+    <% @entries.each do |e| %>
+        <h3><strong><a href="/users/<%= e.user.id %>"><%= e.user.email%></a></strong></h3>
+    <% end %>
+    <p>2人のDM</p>
 </div>
 
 <div class="dmMain">
@@ -12,11 +15,9 @@
     <% end %>
 
     <%= form_for @message do |f| %>
-    <%= f.text_field :body, :placeholder => "メッセージを入力して下さい" , :size => 100 %>
-    <%= f.hidden_field :room_id, :value => @room.id %>
-    <br>
-    <%= f.submit "送信する" %>
+        <%= f.text_field :body, :placeholder => "メッセージを入力して下さい" , :size => 100 %>
+        <%= f.hidden_field :room_id, :value => @room.id %>
+        <br>
+        <%= f.submit "送信する" %>
     <% end %>
 </div>
-
-<%= link_to "マイページに戻る", user_path %>

@@ -21,13 +21,13 @@
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em><%= @minimum_password_length %> (文字以上)</em>
     <% end %><br />
     <%= f.password_field :password, placeholder:"password", :size => 40 %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password %><i>(確認用)</i><br />
     <%= f.password_field :password_confirmation, placeholder: "password", :size => 40 %>
   </div>
 
@@ -38,5 +38,5 @@
 <div>
 
 <br>
-<%= render "users/shared/links" %>
+<p><%= render "users/shared/links" %><p>
 <br>

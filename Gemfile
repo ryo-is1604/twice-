@@ -77,7 +77,8 @@ group :production do
 end
 
 gem 'carrierwave' , '~> 1.3' ,  '>= 1.3.1'
-gem 'cloudinary'
+gem 'cloudinary', '< 2.0.0'
+
 
 gem 'dotenv-rails'
 

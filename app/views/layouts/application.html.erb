@@ -8,28 +8,48 @@
     <script src="https://kit.fontawesome.com/91114b2a85.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Preahvihear&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi&family=Preahvihear&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
   </head>
 
- <body>
-   <header>
-     <h1>
-     <%= link_to "TWICE", songs_path %>
-     </h1>
-     <div class="header-list">
-      <ul>
-       <li><%= link_to "音楽診断", perfumes_path %>
-       <li><%= link_to "新規投稿", new_song_path %>
-       <% if user_signed_in? %>
-        <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-       <% else %>
-        <li><%= link_to "新規登録", new_user_registration_path %></li>
-        <li><%= link_to "ログイン", new_user_session_path %></li>
-       <% end %>
-      </ul>
-     </div>
-   </header>
-  <main>
-    <%= yield %>
-  </main>
-</body>
+  <body>
+    <header>
+      <h1>
+      <%= link_to "T-MUSIC", root_path %>
+      </h1>
+      <div class="header-list">
+        <ul>
+        <li><%= link_to "ホーム", root_path %>
+        <li><%= link_to "音楽診断", perfumes_path %>
+        <li><%= link_to "投稿一覧", songs_path %>
+        <li><%= link_to "新規投稿", new_song_path %>
+        <% if user_signed_in? %>
+          <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+          <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "新規登録", new_user_registration_path %></li>
+          <li><%= link_to "ログイン", new_user_session_path %></li>
+        <% end %>
+        </ul>
+        <ul class=”sns-btn”>
+          <li><a href="https://www.instagram.com/twicetagram/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA=="><i class="fa-brands fa-instagram fa-2x"></i></a></li>
+          <li><a href="https://x.com/JYPETWICE?s=20"><i class="fa-brands fa-x-twitter fa-2x"></i></a></li>
+          <li><a href="https://www.youtube.com/@TWICE"><i class="fa-brands fa-youtube fa-2x"></i></a></li>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+      <p>Copyright © Ryo All Rights Reserved.</p>
+    </footer>
+  </body>
 </html>

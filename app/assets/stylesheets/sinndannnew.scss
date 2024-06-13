@@ -1,19 +1,108 @@
-input[type="submit"] {
-    width: 200px;
-    font-size: 20px;
+.sindanbotan input[type="submit"] {
+  border: 2px solid #000;
+  border-radius: 0;
+  background: #fff;
 }
+
+.sindanbotan input[type="submit"]:hover{
+  color: #fff;
+  background: #000;
+}
+
+input[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 2px solid #566573;
+    margin-right:10px;
+    }
 
 .container-sindan{
     text-align: center;
 }
 
-.col-12{
+.col-12 p{
     margin:20px;
     font-size: 25px;
 }
-
+.col-10{
+    margin-bottom: 60px;
+}
 .col-6{
     display:inline-block;
     margin:15px;
-    font-size:20px
+    font-size:20px;
 }
+
+.col-6 p{
+    margin-bottom: 40px;
+}
+
+.row{
+  margin-top: 60px;
+}
+
+.ECM_CheckboxInput {
+    padding: 12px 8px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  .ECM_CheckboxInput-Input {
+    margin: 0;
+    width: 0;
+    opacity: 0;
+  }
+  .ECM_CheckboxInput:hover{
+    background: rgba(218, 103, 21, 0.092) !important;
+  }
+  .ECM_CheckboxInput-Input:focus + .ECM_CheckboxInput-DummyInput{
+    border: dashed 2px #333333;
+  }
+  .ECM_CheckboxInput-Input:checked + .ECM_CheckboxInput-DummyInput {
+    background: #333333;
+  }
+  .ECM_CheckboxInput-Input:checked + .ECM_CheckboxInput-DummyInput::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40%;
+    height: 4px;
+    border-radius: 2px;
+    transform: translate(-6px, 5px) rotateZ(-135deg);
+    transform-origin: 2px 2px;
+    background: #FFFFFF;
+  }
+  .ECM_CheckboxInput-Input:checked + .ECM_CheckboxInput-DummyInput::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 76%;
+    height: 4px;
+    border-radius: 2px;
+    transform: translate(-6px, 5px) rotateZ(-45deg);
+    transform-origin: 2px 2px;
+    background: #FFFFFF;
+  }
+  .ECM_CheckboxInput-DummyInput {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 32px;
+    height: 32px;
+    border: solid 2px transparent;
+    background: rgba(0,0,0, .1);
+    border-radius: 4px;
+  }
+  .ECM_CheckboxInput-LabelText {
+    margin-left: 12px;
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+  }

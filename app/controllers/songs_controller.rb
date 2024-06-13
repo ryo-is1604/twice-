@@ -13,6 +13,7 @@ class SongsController < ApplicationController
 
     def new
         @song = Song.new
+
     end
     
     def create
@@ -50,10 +51,11 @@ class SongsController < ApplicationController
         song.destroy
         redirect_to action: :index
     end
-   
-
-  
     
+    def top
+      
+    end
+
     private
     def song_params
         params.require(:song).permit(:music, :youtube_url, :about, :image)

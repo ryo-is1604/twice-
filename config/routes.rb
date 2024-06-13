@@ -16,7 +16,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
+  
   get 'rooms/show'
   resources :perfumes
-  root 'songs#index'
+  root 'songs#top'
 end

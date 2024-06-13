@@ -1,52 +1,54 @@
-<h1>TWICE</h1>
-<h3>投稿詳細</h3>
+<%= stylesheet_link_tag 'show', :media => "all" %>
 
-<div class="song">
-  <p><%= image_tag @user.image_url, size: "50x50" if @user.image? %>
-  <p><%= @user.name %></p>
-  <p><%= @song.music %></p>
-  <p><%= @song.about %></p>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= find_youtube_url(@song.youtube_url) %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  <p><%= @song.created_at %></p>
 
-   <% if user_signed_in? %>
-    <% if current_user.already_liked?(@song) %>
-      <%= link_to song_like_path(@song), method: :delete do %>
-        <i class="fas fa-heart"></i><%= @song.likes.count %>
+<div class="container2">
+  <h1 class="ditail">投稿詳細</h1>
+  <div class="song2">
+    <p><%= @user.name %><br>
+    <p><%= @song.music %><br>
+    <p><%= @song.about %><br>
+    <p><iframe width="608" height="342" src="https://www.youtube.com/embed/<%= find_youtube_url(@song.youtube_url) %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+
+    <% if user_signed_in? %>
+      <% if current_user.already_liked?(@song) %>
+        <%= link_to song_like_path(@song), method: :delete do %>
+          <i class="fas fa-heart"></i><%= @song.likes.count %>
+        <% end %>
+      <% else %>
+      <%= link_to song_likes_path(@song), method: :post do %>
+        <i class="far fa-heart"></i><%= @song.likes.count %>
+      <% end %>
       <% end %>
     <% else %>
-     <%= link_to song_likes_path(@song), method: :post do %>
       <i class="far fa-heart"></i><%= @song.likes.count %>
-     <% end %>
     <% end %>
-   <% else %>
-    <i class="far fa-heart"></i><%= @song.likes.count %>
-   <% end %>
-</div>
+  </div>
 
-<h2>いいねしたユーザー</h2>
-<% @song.liked_users.each do |user| %>
-  <li><%= user.email %></li>
-<% end %>
+  <div class="responce">
+      <div class="like">
+        <h2>いいねしたユーザー</h2>
+        <% @song.liked_users.each do |user| %>
+          <li><%= link_to user.name, user_path(user.id) %></li>
+        <% end %>
+      </div>
+      <div class="comment-wrapper">
+        <h3>コメント一覧</h3>
+        <% @comments.each do |c| %>
+          <div class="comments">
+            <%= c.user.name unless c.user.blank? %><br>
+            <%= c.content %>
+          </div><br>
+        <% end %>
 
-<div class="comment-wrapper">
-  <p>コメント一覧</p>
-  <% @comments.each do |c| %>
-    <div>
-      <%= c.user.email unless c.user.blank? %>
-      <br>
-      <%= c.content %>
-    </div>
-      <br>
-  <% end %>
-
-  <% if user_signed_in? %>
-    <%= form_with(model: [@song, @comment], local: true) do |f| %>
-      <%= f.text_area :content %>
-      <%= button_tag type: "submit" do %>
-        <i class="far fa-comments"></i> コメントする
-      <% end %>
-    <% end %>
-  <% end %>
+        <% if user_signed_in? %>
+          <%= form_with(model: [@song, @comment], local: true) do |f| %>
+            <%= f.text_area :content %><br>
+            <%= button_tag type: "submit" do %>
+              <i class="far fa-comments"></i> コメントする
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+  </div>
 </div>
 <%= link_to "投稿一覧に戻る", songs_path %>

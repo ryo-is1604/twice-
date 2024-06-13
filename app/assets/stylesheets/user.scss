@@ -1,0 +1,135 @@
+.toukouitirann{
+    display: flex;
+    justify-content: space-between;
+	  flex-wrap: wrap;
+    text-align: center;
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.song{
+    width: 33.3%;
+    margin-top: 10px;
+    padding-top: 20px;
+}
+
+input[type="submit"] {
+    width: 150px;
+    font-size: 15px;
+    margin: 10px 0px;
+}
+
+.tabs {
+    margin-top: 50px;
+    padding-bottom: 40px;
+    background-color: rgb(254, 239, 227);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+  }
+  
+  /*タブのスタイル*/
+  .tab_item {
+    width: calc(100%/2);
+    height: 50px;
+    border-bottom: 3px solid #eeac31;
+    background-color: #d9d9d9;
+    line-height: 50px;
+    font-size: 16px;
+    text-align: center;
+    color: #565656;
+    display: block;
+    float: left;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.2s ease;
+  }
+  .tab_item:hover {
+    opacity: 0.75;
+  }
+  
+  /*ラジオボタンを全て消す*/
+  input[name="tab_item"] {
+    display: none;
+  }
+  
+  /*タブ切り替えの中身のスタイル*/
+  .tab_content {
+    display: none;
+
+    clear: both;
+    overflow: hidden;
+  }
+  
+  
+  /*選択されているタブのコンテンツのみを表示*/
+  #all:checked ~ #all_content,
+  #programming:checked ~ #programming_content {
+    display: block;
+  }
+  
+  /*選択されているタブのスタイルを変える*/
+  .tabs input:checked + .tab_item {
+    background-color: #eeac31;
+    color: #fff;
+  }
+
+  .name p{
+    font-size: 17px;
+  }
+
+  .edit{
+    font-size: 15px;
+  }
+
+.profile{
+  text-align: center;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.stats{
+  font-size: 20px;
+}
+  
+// .name{
+//   margin-right: 700px;
+
+// }
+
+.toukouitirann{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.song{
+    padding-top: 20px;
+    border: 1px solid #000000;
+    border-radius: 5%;
+    margin-top: 50px;
+    background-color:#f9e4d0;
+    font-size: 19px;
+}
+
+.song p{ 
+  font-size: 19px;
+  margin: 10px;
+}
+
+.tab_content h2{
+  font-size: 25px;
+  margin: 25px 0px 0px 25px;
+}
+
+.DM p{
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+p.about5{
+  font-weight: lighter;
+}

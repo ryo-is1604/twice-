@@ -1,0 +1,337 @@
+<%= stylesheet_link_tag 'top', :media => "all" %>
+
+<div class="topvideo">
+    <div class="overlay"></div>
+    <div id="yt_player"></div>
+    <script>
+        // YouTube APIの読み込み
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        //iframe player APIコードを非同期で読み込みます。
+        var player;
+
+        function onYouTubeIframeAPIReady() {
+            //動画を埋め込む場所を指定(1.のidを入れる)
+            player = new YT.Player('yt_player', {
+                //YouTUbeの動画IDを入れる
+                videoId: 'ye1k6JNf1NI',
+                //オプションを設定する場所
+                playerVars: {
+                    playsinline: 1,
+                    loop: 1,
+                    listType: 'playlist',
+                    playlist: 'ye1k6JNf1NI', //上と同じ動画ID_リピートするには入力必須
+                    rel: 0, // 関連動画の非表示
+                    controls: 0, // 動画プレーヤーのコントロール非表示
+                    start: 7,
+                },
+
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        //プレーヤの準備完了後に呼び出す関数
+        function onPlayerReady(event) {
+            event.target.mute(); //ミュートにしないとスマホで再生されない
+            event.target.playVideo(); //ビデオを再生
+        }
+        var done = false;
+
+        function onPlayerStateChange(event) {
+            var ytStatus = event.target.getPlayerState();
+            if (ytStatus == YT.PlayerState.ENDED) {
+                event.target.mute(); //ミュートにしないとスマホで再生されない
+                event.target.playVideo(); //ビデオを再生
+            }
+        }
+        // 上下左右に出てくる黒帯を非表示
+        var $WIN = $(window); // ブラウザのウインドウを取得する
+    
+        function screen_fit () {
+            // 上下左右の縦横比を調節する関数
+            const WIN_H = $WIN.height(); // windowの高さを取得
+            const WIN_W = $WIN.width(); // windowの幅を取得
+            const screen_switch = 0.5625; // youtubeの縦横比16:9=>9/16した値
+            const screen_ratio = WIN_H / WIN_W; // windowの高さの値/windowの幅の値
+            const ratio_H = WIN_H / screen_switch; // windowの高さ/縦横比の値
+            const ratio_W = WIN_W * screen_switch; // windowの幅*縦横比の値
+    
+            if (screen_ratio > screen_switch) {
+                // windowの高さの値/windowの幅の値>youtubeの縦横比16:9=>9/16した値
+                $("#yt_player").css({　//動画を入れる場所のid名入れる
+                    height: "100%",
+                    width: ratio_H,
+                    "margin-top": "0",
+                    "margin-left": -ratio_H / 2,
+                    left: "50%",
+                    top: "0"
+                });
+            } else {
+                $("#yt_player").css({　//APIの場所のid名入れる
+                    width: "100%",
+                    height: ratio_W,
+                    "margin-top": -ratio_W / 2,
+                    "margin-left": "0",
+                    top: "50%",
+                    left: "0"
+                });
+            }
+        }
+    
+        $WIN.on("resize", function () {
+            screen_fit();
+        });
+    
+        $(function () {
+            screen_fit ();
+        });
+    </script>
+</div>
+
+<div class="top-container">
+    <br>
+    <p class="title">ABOUT "TWICE"</p>
+    <div class="abouttwice1">
+        <%=image_tag 'twice2.jpg', size:"210×210" %>
+        <div class="abouttwice2">
+            <p>2015年にサバイバル形式のオーディション番組「SIXTEEN」から結成<br>
+            韓国人5人、日本人3人、台湾人1人からなる多国籍ガールズグループ<br>
+            グループ名"TWICE"には『いい音楽で一度、素敵なパフォーマンスで二度魅了させる』<br>
+            という意味が込められている
+        </div>
+    </div>
+    <p class="title">PROFILE</p>
+    <div class="profile1">
+        <label class="open1" for="pop-up1">NAYEON</label>
+        <input type="checkbox" id="pop-up1">
+        <div class="overlay">
+            <div class="window">
+                <label class="close" for="pop-up1">Close</label>
+                <div class="memo">
+                    <h4>NAYEON</h4>
+                    <a href="https://www.instagram.com/nayeonyny/"><i class="fa-brands fa-instagram fa-4x"></i></a>
+                </div>
+                <p>本名：イム・ナヨン（ハングル：임 나연）<br>
+                   生年月日：1995年9月22日<br>
+                   身長：163cm<br>
+                   血液型：A型<br>
+                   出身地：韓国ソウル特別市<br>
+                </p>
+                <iframe width="384" height="216" src="https://www.youtube.com/embed/f6YDKF0LVWw?si=kR1Fw3TphRAbttgL" allowfullscreen></iframe><br>
+            </div>
+        </div>
+        <label class="open2" for="pop-up2">JEONGYEON</label>
+        <input type="checkbox" id="pop-up2">
+        <div class="overlay">
+            <div class="window">
+                <label class="close" for="pop-up2">Close</label>
+                <div class="memo">
+                    <h4>JEONGYEON</h4>
+                    <a href="https://www.instagram.com/jy_piece/"><i class="fa-brands fa-instagram fa-4x"></i></a>
+                </div>
+                <p>本名：ユ・ジョンヨン（ハングル：유 경완）<br>
+                   生年月日：1996年11月1日<br>
+                   身長：167cm<br>
+                   血液型：O型<br>
+                   出身地：韓国 京畿道水原市<br>
+                </p>
+                <iframe width="384" height="216" src="https://www.youtube.com/embed/9deDUNwhEy4?si=Zbdi9X4KcAd7tOfq" allowfullscreen></iframe><br>
+            </div>
+        </div>
+        <label class="open3" for="pop-up3">MOMO</label>
+        <input type="checkbox" id="pop-up3">
+        <div class="overlay">
+            <div class="window">
+                <label class="close" for="pop-up3">Close</label>
+                <div class="memo">
+                    <h4>MOMO</h4>
+                    <a href="https://www.instagram.com/momo/"><i class="fa-brands fa-instagram fa-4x"></i></a>
+                </div>
+                <p>本名：平井 もも（ハングル：모모）<br>
+                   生年月日：1996年11月9日<br>
+                   身長：162cm<br>
+                   血液型：A型<br>
+                   出身地：日本 京都府綴喜郡田辺町<br>
+                </p>
+                <iframe width="384" height="216" src="https://www.youtube.com/embed/7Xv09ZURWQE?si=KrQm4fCyoMRkRtZc" allowfullscreen></iframe><br>
+            </div>
+        </div>
+        <label class="open4" for="pop-up4">SANA</label>
+        <input type="checkbox" id="pop-up4">
+        <div class="overlay">
+            <div class="window">
+                <label class="close" for="pop-up4">Close</label>
+                <div class="memo">
+                    <h4>SANA</h4>
+                    <a href="https://www.instagram.com/m.by__sana/"><i class="fa-brands fa-instagram fa-4x"></i></a>
+                </div>
+                <p>本名：湊﨑 紗夏（ハングル：사나）<br>
+                   生年月日：1996年12月2日9<br>
+                   身長：164cm<br>
+                   血液型：B型<br>
+                   出身地：日本 大阪府大阪市天王寺区<br>
+                </p>
+                <iframe width="384" height="216" src="https://www.youtube.com/embed/7123DLSc9FA?si=WPtOTVwYMi2Qaixh" allowfullscreen></iframe><br>
+            </div>
+        </div>
+        <label class="open5" for="pop-up5">JIHYO</label>
+        <input type="checkbox" id="pop-up5">
+        <div class="overlay">
+            <div class="window">
+                <label class="close" for="pop-up5">Close</label>
+                <div class="memo">
+                    <h4>JIHYO</h4>
+                    <a href="https://www.instagram.com/_zyozyo/"><i class="fa-brands fa-instagram fa-4x"></i></a>
+                </div>
+                <p>本名：パク・ジヒョ（ハングル：박 지수）<br>
+                   生年月日：1997年2月1日<br>
+                   身長：160cm<br>
+                   血液型：O型<br>
+                   出身地：韓国 京畿道九里市<br>
+                </p>
+                <iframe width="384" height="216" src="https://www.youtube.com/embed/jyw_vrI4ySg?si=Ots2WiRPRly7Fed_" allowfullscreen></iframe><br>
+            </div>
+        </div>
+        <label class="open6" for="pop-up6">MINA</label>
+        <input type="checkbox" id="pop-up6">
+        <div class="overlay">
+            <div class="window">
+                <label class="close" for="pop-up6">Close</label>
+                <div class="memo">
+                    <h4>MINA</h4>
+                    <a href="https://www.instagram.com/mina_sr_my/"><i class="fa-brands fa-instagram fa-4x"></i></a>
+                </div>
+                <p>本名：名井 南（ハングル：미나）<br>
+                   生年月日：1997年3月24日<br>
+                   身長：163cm<br>
+                   血液型：A型<br>
+                   出身地：日本 兵庫県西宮市<br>
+                </p>
+                <iframe width="384" height="216" src="https://www.youtube.com/embed/cAvMGWLZCHA?si=Ugb5LWW8i98nNIQc" allowfullscreen></iframe><br>
+            </div>
+        </div>
+        <label class="open7" for="pop-up7">DAHYUN</label>
+        <input type="checkbox" id="pop-up7">
+        <div class="overlay">
+            <div class="window">
+                <label class="close" for="pop-up7">Close</label>
+                <div class="memo">
+                    <h4>DAHYUN</h4>
+                    <a href="https://www.instagram.com/dahhyunnee/"><i class="fa-brands fa-instagram fa-4x"></i></a>
+                </div>
+                <p>本名：キム・ダヒョン（ハングル：김 다현）<br>
+                   生年月日：1998年5月28日<br>
+                   身長：159cm<br>
+                   血液型：O型<br>
+                   出身地：韓国 京畿道城南市<br>
+                </p>
+                <iframe width="384" height="216" src="https://www.youtube.com/embed/SY2kZjVEd54?si=k7IwE3c0mBEsLkT0" allowfullscreen></iframe><br>
+            </div>
+        </div>
+        <label class="open8" for="pop-up8">CHAEYOUNG</label>
+        <input type="checkbox" id="pop-up8">
+        <div class="overlay">
+            <div class="window">
+                <label class="close" for="pop-up8">Close</label>
+                <div class="memo">
+                    <h4>CHAEYOUNG</h4>
+                    <a href="https://www.instagram.com/chaeyo.0/"><i class="fa-brands fa-instagram fa-4x"></i></a>
+                </div>
+                <p>本名：ソン・チェヨン（ハングル：손 채영）<br>
+                   生年月日：1999年4月23日<br>
+                   身長：159cm<br>
+                   血液型：B型<br>
+                   出身地：韓国ソウル特別市<br>
+                </p>
+                <iframe width="384" height="216" src="https://www.youtube.com/embed/tKItcpOutpg?si=JFgcehuKUtYBlTMI " allowfullscreen></iframe><br>
+            </div>
+        </div>
+        <label class="open9" for="pop-up9">TZUYU</label>
+        <input type="checkbox" id="pop-up9">
+        <div class="overlay">
+            <div class="window">
+                <label class="close" for="pop-up9">Close</label>
+                <div class="memo">
+                    <h4>TZUYU</h4>
+                    <a href="https://www.instagram.com/thinkaboutzu/"><i class="fa-brands fa-instagram fa-4x"></i></a>
+                </div>
+                <p>本名：チョウ・ツウィ（ハングル：쯔위）<br>
+                   生年月日：1999年6月14日<br>
+                   身長：172cm<br>
+                   血液型：A型<br>
+                   出身地：台湾 台南市東区<br>
+                </p>
+                <iframe width="384" height="216" src="https://www.youtube.com/embed/IO1Nl9ErTsI?si=tEpDTvdm6iP1P-mf" allowfullscreen></iframe><br>
+            </div>
+        </div>
+    </div>
+
+    <p class="title">HISTORY</p>
+    <div class="history">
+        <div class="left">
+            <div class="event">
+                <div class="day1">
+                    2015.10.20<br>
+                    1st Mini Album『THE STORY BEGINS』をリリースし、<br>
+                    韓国でデビュー<br>
+                </div><br>
+                <div class="video">
+                    <iframe width="384" height="216" src="https://www.youtube.com/embed/0rtV5esQT6I?si=LG6iLeYjw86Snm7b" allowfullscreen></iframe><br>
+                </div>
+            </div>
+            <div class="event">
+                <div class="day1">
+                    2021.10.1<br>
+                    1st English Album『The Feels』をリリース<br>
+                </div><br>
+                <div class="video">
+                    <iframe width="384" height="216" src="https://www.youtube.com/embed/f5_wn8mexmM?si=BRtuDzM2EF6r44nU" allowfullscreen></iframe><br>
+                </div>
+            </div>
+        </div>
+        <div class="thinbottom"></div>
+        <div class="right">
+            <div class="event">
+                <div class="day2">
+                    2017.6.28<br>
+                    Best Album『#TWICE』をリリースし、<br>
+                    日本デビュー<br>
+                </div><br>
+                <div class="video">
+                    <iframe width="384" height="216" src="https://www.youtube.com/embed/t35H2BVq490?si=wJl3FbjOtd8Zjj59" allowfullscreen></iframe><br>
+                </div>
+            </div>
+            <div class="event">
+                <div class="day2">
+                    2023.7.26<br>
+                    モモ・サナ・ミナがユニット「MISAMO」として<br>
+                    Mini Album『Masterpiece』をリリースし、デビュー<br>
+                </div><br>
+                <div class="video">
+                    <iframe width="384" height="216" src="https://www.youtube.com/embed/woKq2sD8xho?si=QJMQuTK1f6kJ8_3N" allowfullscreen></iframe><br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="title">POSTS</p>
+    <h2>みんなの投稿を見たり、投稿してみよう！</h2>
+    <div class="posts1">
+        <a href="songs" class="btn btn-border">投稿一覧へ</a>
+        <a href="songs/new" class="btn btn-border">投稿する</a>
+    </div>
+
+    <p class="title">RECOMMEND</p>
+    <h2>あなたに合った曲を提案します！</h2>
+    <div class="posts1">
+        <a href="perfumes/new" class="btn btn-border">診断する</a>
+    </div>
+    
+    
+</div>

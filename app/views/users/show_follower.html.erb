@@ -1,11 +1,11 @@
 <%= stylesheet_link_tag 'follow', :media => "all" %>
 <% @user.followers.each do |user| %>
+  <div class="follow">
     <table>
-    <tr>
-      <td>  <%= image_tag user.image_url, size: "50x50" if user.image? %></td>
-      <td>  <%= user.name %> </td>
-      <td><%= link_to '詳細', user_path(user) %></td>
-    </tr>
-    
+        <td>  <%= image_tag user.image_url, size: "50x50" if user.image? %></td>
+        <td>  <%= user.name %> </td>
+        <td><%= link_to '詳細', user_path(user) %></td>
+      </div>
     </table>
-    <% end %>
+  </div>
+  <% end %>

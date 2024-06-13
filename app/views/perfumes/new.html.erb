@@ -6,55 +6,56 @@
             <div class="col-12">
                 <p>Question1. 最近の曲？昔の曲？</p>
             </div>
-
             <div class="col-10">
                 <div class="col-6">
-                    <p><%= f.check_box :question, {multiple: true}, "1", nil %>最近の曲</p>
+                    <label class="ECM_CheckboxInput"><%= f.check_box :question, {multiple: true}, "1", nil %><span class="ECM_CheckboxInput-LabelText">最近の曲</span></label>
                 </div>
                 <div class="col-6">
-                    <p><%= f.check_box :question, {multiple: true}, "2", nil %>昔の曲</p>
+                    <label class="ECM_CheckboxInput"><%= f.check_box :question, {multiple: true}, "2", nil %><span class="ECM_CheckboxInput-LabelText">昔の曲</span></label>
+                </div>
+            </div>
+            
+            <div class="col-10">
+                <div class="col-12">
+                    <p>Question2. 韓国語の曲？日本語の曲？<p>
+                </div>
+                <div class="col-6">
+                    <label class="ECM_CheckboxInput"><%= f.check_box :question, {multiple: true}, "1", nil %><span class="ECM_CheckboxInput-LabelText">韓国語</span></label>
+                </div>
+                <div class="col-6">
+                    <label class="ECM_CheckboxInput"><%= f.check_box :question, {multiple: true}, "2", nil %><span class="ECM_CheckboxInput-LabelText">日本語</span></label>
                 </div>
             </div>
 
             <div class="col-10">
                 <div class="col-12">
-                    <p>Question2. 韓国語の曲？日本語の曲？</p>
+                    <p>Question3. どんな気分？<p>
                 </div>
                 <div class="col-6">
-                    <p><%= f.check_box :question, {multiple: true}, "1", nil %>韓国語</p>
+                    <label class="ECM_CheckboxInput"><%= f.check_box :question, {multiple: true}, "1", nil %><span class="ECM_CheckboxInput-LabelText">盛り上がりたい</span></label>
                 </div>
                 <div class="col-6">
-                    <p><%= f.check_box :question, {multiple: true}, "2", nil %>日本語</p>
+                    <label class="ECM_CheckboxInput"><%= f.check_box :question, {multiple: true}, "2", nil %><span class="ECM_CheckboxInput-LabelText">落ち着きたい</span></label>
                 </div>
             </div>
 
             <div class="col-10">
                 <div class="col-12">
-                    <p>Question3. どんな気分？</p>
+                    <p>Question4. どんな曲？<p>
                 </div>
                 <div class="col-6">
-                    <p><%= f.check_box :question, {multiple: true}, "1", nil %>盛り上がりたい</p>
+                    <label class="ECM_CheckboxInput"><%= f.check_box :question, {multiple: true}, "1", nil %><span class="ECM_CheckboxInput-LabelText">かっこいい</span></label>
                 </div>
                 <div class="col-6">
-                    <p><%= f.check_box :question, {multiple: true}, "2", nil %>落ち着きたい</p>
-                </div>
-            </div>
-
-            <div class="col-10">
-                <div class="col-12">
-                    <p>Question4. どんな曲？</p>
-                </div>
-                <div class="col-6">
-                    <p><%= f.check_box :question, {multiple: true}, "1", nil %>かっこいい</p>
-                </div>
-                <div class="col-6">
-                    <p><%= f.check_box :question, {multiple: true}, "2", nil %>かわいい</p>
+                    <label class="ECM_CheckboxInput"><%= f.check_box :question, {multiple: true}, "2", nil %><span class="ECM_CheckboxInput-LabelText">かわいい</span></label>
                 </div>
             </div>
         </div>
         <div class="sindanbotan">
             <%= f.submit "診断" %>
         </div>
+        <br><br><br><br>
     </div>
     
 <% end %>
+

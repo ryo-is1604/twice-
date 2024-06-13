@@ -1,29 +1,37 @@
 .signup{
     text-align: center;  
-    margin: 50px auto;
+    margin: 40px auto 24px;
     width: 50%;
     border: solid #FCCFA6;
-    border-radius: 10px;
+    border-radius: 30px;
     text-align: center;
     background-color: #FCCFA6;
+    padding: 20px;
 }
 
+.signup h1{
+    font-size: 30px;
+}
 .field{
     font-size: 20px;
 }
 
 .login{
     text-align: center;
-    margin: 50px auto;
+    margin: 50px auto 119px;
     width: 50%;
     border: solid #FCCFA6;
-    border-radius: 10px;
+    border-radius: 30px;
     text-align: center;
     background-color: #FCCFA6;
+    padding: 20px;
 }
 
-
+.login h1{
+    font-size: 30px;
+}
 input[type="submit"] {
     width: 200px;
+    height: 40px;
     font-size: 20px;
 }
